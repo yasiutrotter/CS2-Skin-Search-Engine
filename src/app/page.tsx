@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
+import { Navbar } from "./components/Navbar";
 
 type Skin = {
   weapon: string;
@@ -46,17 +47,17 @@ export default function Home() {
 
   const router = useRouter()
   return (
-    <div className="px-96">
+    <div className="px-96 my-8 bg-gray-950">
+      <Navbar />
       <div className="flex flex-col items-center justify-center mt-16">
-        <h1 className="text-5xl font-bold mb-2">CS2 Skin Search Engine</h1>
-        <h3 className="font-normal text-ciemny-100 mb-12">Search any existing CS2 skin and test it in game!</h3>
+        <h1 className="text-5xl font-extrabold text-gray-50 mb-2">CS2 Skin Search Engine</h1>
+        <h3 className="text-xl font-thin text-gray-400">Search any existing CS2 skin and test it in game!</h3>
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter a skin or weapon name"
-          className="pl-4 p-4 w-full rounded-md text-sm font-thin place-content-center bg-ciemny-500 text-white decoration-transparent border-0 outline-none mb-4"
-        />
+          className="pl-8 mt-20 p-4 w-full rounded-full text-sm font-thin place-content-center bg-gray-900 text-gray-50 decoration-transparent border-2 border-gray-800 outline-none mb-4"></input>
       </div>
       {query.trim().length < 3 ? (
         <div className="container mx-auto">
@@ -67,16 +68,16 @@ export default function Home() {
         </div>
       ) : (
         <div className="container mx-auto">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-4">
           {filteredSkins.map((skin, index) => (
-            <div key={index} className="flex-col flex items-center justify-center p-2 py-6 rounded-xl cursor-pointer hover:bg-ciemny-500 transition-colors duration-300 ease-in-out" onClick={() => router.push(`/skin/${encodeURIComponent(skin.weapon).toLowerCase()}/${encodeURIComponent(skin.finish).toLowerCase()}`)}>
+            <div key={index} className="flex-col bg-gray-900 border-2 border-gray-800 flex items-center justify-center p-2 py-6 rounded-xl cursor-pointer hover:bg-gray-800 transition-colors duration-300 ease-in-out" onClick={() => router.push(`/skin/${encodeURIComponent(skin.weapon).toLowerCase()}/${encodeURIComponent(skin.finish).toLowerCase()}`)}>
               <img src={skin.image} alt={`${skin.weapon} ${skin.finish}`} className="w-48 flex h-auto mb-2" />
-              <p className="text-center text-2xl">{skin.weapon}</p>
-              <p className="text-center text-md">{skin.finish}</p>
+              <p className="text-center font-extrabold text-3xl">{skin.weapon}</p>
+              <p className="text-center font-medium text-xl">{skin.finish}</p>
             </div>
           ))}
           {filteredSkins.length === 0 && (
-            <p className="text-ciemny-300 text-center col-span-full">Brak wyników dla podanego zapytania.</p>
+            <p className="text-gray-400 text-center col-span-full mt-4">No results found for your query.</p>
           )}
         </div>
         </div>

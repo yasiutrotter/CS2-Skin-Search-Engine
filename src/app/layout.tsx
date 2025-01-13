@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${pop.variable} antialiased text-[#fbfbfb]`}
+        className={`antialiased bg-gray-950 text-[#fbfbfb]`}
       >
         {children}
       </body>
