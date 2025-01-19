@@ -3,6 +3,7 @@
 A web application designed to help users search for their favorite Counter-Strike 2 (CS2) skins and view all the relevant details. The project is built as a personal learning experience to explore frontend development with modern web technologies.
 
 The app is created using [Next.js](https://nextjs.org), [TailwindCSS](https://tailwindcss.com/), and [Typescript](https://www.typescriptlang.org/).
+Logo by [Logoipsum.com by SignalSupply](https://logoipsum.com/).
 
 ## Features
 
