@@ -32,7 +32,7 @@ export default function Home() {
         setSkins(uniqueSkins);
       });
   }, []);
-
+  
   useEffect(() => {
     if (query.trim() === "") {
       setFilteredSkins([]);
@@ -80,7 +80,7 @@ export default function Home() {
                   )
                 }
               >
-                <Image src={skin.image} alt={`${skin.weapon} ${skin.pattern}`} width={192} height={192} loading="lazy" quality={75} className="flex h-auto mb-2"/>
+                <Image src={skin.image} alt={`${skin.weapon} ${skin.pattern}`} width={192} height={192} loading="lazy" quality={75} className="flex w-auto h-auto mb-2"/>
                 
                 
                 <p className="text-center font-extrabold text-3xl mt-6">{skin.weapon}</p>
