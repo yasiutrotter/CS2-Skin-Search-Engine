@@ -1,8 +1,15 @@
 import React from 'react'
+import Logo from '../../../public/assets/Logo'
+import { useRouter } from 'next/navigation'
 
 export const Navbar = () => {
+
+  const router = useRouter();
   return (
-    <div className='flex justify-center'>
+    <div className='flex items-center justify-center gap-4'>
+        <div onClick={() => router.push('/')}  className='cursor-pointer border-2 border-gray-800 flex items-center w-16 h-16 justify-center rounded-full'>
+          <Logo className='w-8 h-8'/>
+        </div>
         <nav className='inline-block p-2 border-2 text-base border-gray-800 rounded-full'>
             <ul className='flex p-0 m-0'>
                 <li className='flex items-center justify-center space-x-2'>

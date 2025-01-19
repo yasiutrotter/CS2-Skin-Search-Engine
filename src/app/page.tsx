@@ -10,6 +10,10 @@ type Skin = {
   weapon: string;
   pattern: string; 
   image: string;
+  rarity: {
+    name: string;
+    color: string;
+  },
 };
 
 export default function Home() {
@@ -24,6 +28,10 @@ export default function Home() {
           weapon: value.weapon?.name?.toString() || "", 
           image: value.image,
           pattern: value.pattern?.name?.toString() || "",
+          rarity: {
+            name: value.rarity?.name?.toString() || "",
+            color: value.rarity?.color?.toString() || "",
+          },
         }));
 
         const uniqueSkins = Array.from(
@@ -55,13 +63,13 @@ export default function Home() {
       <Navbar />
       <div className="flex flex-col items-center justify-center mt-16">
         <h1 className="text-5xl font-extrabold text-gray-50 mb-2">CS2 Skin Search Engine</h1>
-        <h3 className="text-xl font-thin text-gray-400">Search any existing CS2 skin and test it in game!</h3>
+        <h3 className="text-xl font-light text-gray-400">Search any existing CS2 skin and test it in game!</h3>
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter a skin or weapon name"
-          className="pl-8 mt-20 p-4 w-full rounded-full text-sm font-thin place-content-center bg-gray-900 text-gray-50 decoration-transparent border-2 border-gray-800 outline-none mb-4"
+          className="pl-8 mt-20 p-4 w-full rounded-full text-sm font-light place-content-center bg-gray-900 text-gray-50 decoration-transparent border-2 border-gray-800 outline-none mb-4"
         ></input>
       </div>
       {query.trim().length < 3 ? (
@@ -75,18 +83,25 @@ export default function Home() {
               
               <div
                 key={index}
-                className="flex-col bg-gray-900 border-2 border-gray-800 flex items-center justify-center p-2 py-6 rounded-xl cursor-pointer hover:bg-gray-800 transition-colors duration-300 ease-in-out"
+                className="flex-col bg-gray-900 border-2 border-gray-800 flex items-center px-4 justify-center p-2 py-6 rounded-xl cursor-pointer hover:bg-gray-800 transition-colors duration-300 ease-in-out"
                 onClick={() =>
                   router.push(
                     `/skin/${encodeURIComponent(skin.weapon).toLowerCase()}/${encodeURIComponent(skin.pattern).toLowerCase()}`
                   )
                 }
               >
+              <div 
+              className="px-4 py-2 mb-4 rounded-full flex items-center justify-center tracking-widest w-full" 
+              key={skin.rarity.color} 
+              style={{ backgroundColor: skin.rarity.color }}
+              >
+               <p className="text-xs font-medium text-white">{skin.rarity.name}</p>
+              </div>
                 <Image src={skin.image} alt={`${skin.weapon} ${skin.pattern}`} width={192} height={192} loading="lazy" quality={75} className="flex w-auto h-auto mb-2"/>
                 
                 
-                <p className="text-center font-extrabold text-3xl mt-6">{skin.weapon}</p>
-                <p className="text-center font-medium text-xl">{skin.pattern}</p>
+                <p className="text-center font-bold text-3xl mt-6">{skin.weapon}</p>
+                <p className="text-center font-normal text-xl">{skin.pattern}</p>
               </div>
             ))}
             {filteredSkins.length === 0 && (
