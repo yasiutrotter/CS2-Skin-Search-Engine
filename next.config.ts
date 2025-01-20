@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
         pathname: "/ByMykel/counter-strike-image-tracker/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.csgodatabase.com",
+        pathname: "/images/**",
+      }
     ],
   },
 };

@@ -94,7 +94,7 @@ export default function SkinDetails() {
       <div className="mt-8"></div>
       <div className="h-full w-full flex flex-row p-8 border-2 border-gray-800 rounded-3xl gap-8">
 
-        <div className="bg-gray-900 rounded-xl w-64 h-64 flex items-center justify-center">
+        <div className="bg-gray-900 rounded-xl w-64 h-64 flex items-center justify-center" >
           <Image src={skin.image} alt={skin.weapon} width={192} height={192} />
         </div>
 
@@ -106,7 +106,7 @@ export default function SkinDetails() {
             </div>
 
             <div>
-              <p className="text-gray-500 text-xs max-w-96 font-light">{skin.description}</p>
+              <p className="text-gray-500 text-xs max-w-96 font-normal">{skin.description}</p>
             </div>
 
             <div

@@ -3,8 +3,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
-import { Navbar } from "./components/Navbar";
 import Image from 'next/image';
+import { Navbar } from "../components/Navbar";
 
 type Skin = {
   weapon: string;
